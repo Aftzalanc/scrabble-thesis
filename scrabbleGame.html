@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scrabble</title>
+    <link rel="stylesheet" href="scrabble.css" />
+  </head>
+  <body>
+    <!-- Top Bar: Contains buttons and the turn indicator -->
+    <div id="topBar">
+      <div id="buttonContainer">
+        <!-- Display current player's turn -->
+        <div id="turnIndicator">Turn: Player 1</div>
+
+        <!-- Scoreboard -->
+        <div id="scoreboard">
+          <!-- Player 1 info -->
+          <div class="score-section">
+            <span>Player 1: <span id="score-p1">0</span> pts</span>
+            <span>Scrabbles: <span id="scrabbles-p1">0</span></span>
+            <span>Time Penalty: -<span id="penalty-time-p1">0</span></span>
+            <span
+              >Letters Penalty: -<span id="penalty-letters-p1">0</span></span
+            >
+            <span>Time: <span id="timer-p1">30:00</span></span>
+          </div>
+
+          <!-- Player 2 info below Player 1 -->
+          <div class="score-section">
+            <span>Player 2: <span id="score-p2">0</span> pts</span>
+            <span>Scrabbles: <span id="scrabbles-p2">0</span></span>
+            <span>Time Penalty: -<span id="penalty-time-p2">0</span></span>
+            <span
+              >Letters Penalty: -<span id="penalty-letters-p2">0</span></span
+            >
+            <span>Time: <span id="timer-p2">30:00</span></span>
+          </div>
+        </div>
+
+        <!-- Button to check words placed on board -->
+        <button id="checkWords">Check Words</button>
+        <!-- Extra control buttons -->
+        <div id="extraButtons">
+          <button id="rearrangeBtn">Rearrange</button>
+          <button id="changeLettersBtn">Change Letters</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Player 2 section (top rack) -->
+    <div class="player-section">
+      <div class="player-label">Player 2</div>
+
+      <div id="rack-top"></div>
+      <!-- rack identical to bottom -->
+    </div>
+
+    <!-- Letter Value Table Panel -->
+    <div id="letterValueTable">
+      <h3>Letter Values</h3>
+      <table id="letterTable">
+        <thead>
+          <tr>
+            <th>Letter</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- JavaScript will fill this with rows -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Scrabble board -->
+    <div id="board"></div>
+
+    <!-- Player 1 section (bottom rack) -->
+    <div class="player-section">
+      <div class="player-label">Player 1</div>
+
+      <div id="rack"></div>
+    </div>
+
+    <!-- JS logic -->
+    <script type="module" src="scrabbleGame.js"></script>
+  </body>
+</html>

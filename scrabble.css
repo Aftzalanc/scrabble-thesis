@@ -1,0 +1,246 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 130vh;
+  background-color: #f0f0f0;
+  margin: 0;
+  user-select: none; /*disables blinking cursor*/
+}
+
+#buttonContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#checkWords {
+  margin-bottom: 10px;
+  padding: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #037f07;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+#extraButtons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+#rearrangeBtn,
+#changeLettersBtn {
+  padding: 5px 15px;
+  font-size: 12px;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+#rearrangeBtn:hover,
+#changeLettersBtn:hover {
+  background-color: #45a049;
+}
+
+.player-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0;
+}
+
+/* Label for each player's rack */
+.player-label {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+/* Current turn indicator */
+#turnIndicator {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+#scoreboard {
+  display: flex;
+  flex-direction: column; /* make it vertical instead of side by side */
+  align-items: flex-start;
+  gap: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.score-section {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+#endOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* dark semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.endMessageBox {
+  background: white;
+  padding: 40px 60px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  color: red;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+#letterValueTable {
+  position: absolute;
+  left: 20px;
+  top: 100px;
+  background-color: #fdf5dc;
+  padding: 12px 16px;
+  border: 3px solid #5d4037;
+  border-radius: 12px;
+  font-family: "Segoe UI", sans-serif;
+  color: #3e2723;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+  max-height: 500px;
+  overflow-y: auto;
+  width: 160px;
+}
+
+#letterValueTable h3 {
+  text-align: center;
+  margin-top: 0;
+  font-size: 18px;
+  color: #4e342e;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #d7ccc8;
+  padding-bottom: 5px;
+}
+
+#letterValueTable table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#letterValueTable th {
+  background-color: #8d6e63;
+  color: white;
+  font-size: 14px;
+  padding: 6px;
+  border-radius: 4px;
+}
+
+#letterValueTable td {
+  font-size: 16px;
+  padding: 6px;
+  text-align: center;
+  border-bottom: 1px solid #d7ccc8;
+}
+
+#letterValueTable tr:nth-child(even) td {
+  background-color: #fbe9e7;
+}
+
+#letterValueTable tr:hover td {
+  background-color: #ffe0b2;
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(15, 1cm);
+  grid-template-rows: repeat(15, 1cm);
+  gap: 0px;
+  padding: 0px;
+}
+
+.cell {
+  width: 1cm;
+  height: 1cm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  border: 1px solid white;
+  background-color: rgb(7, 146, 146);
+  user-select: none; /*disables blinking cursor*/
+}
+
+/* Premium Squares Styling */
+.double-letter {
+  background-color: #b3e0ff;
+}
+.triple-letter {
+  background-color: rgb(60, 106, 232);
+}
+.double-word {
+  background-color: #ff9966;
+}
+.triple-word {
+  background-color: red;
+}
+.star {
+  background-color: #ff9966;
+}
+.star::before {
+  /*content: "\2605"; /* Unicode character for a star */
+  font-size: 20px;
+  color: #000;
+  position: absolute;
+}
+
+/* Rack appearance — applies to both top and bottom */
+#rack,
+#rack-top {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(7, 1cm);
+  gap: 5px;
+  background-color: #b8860b;
+  padding: 5px;
+}
+
+/* Hide and disable interaction for inactive rack */
+.covered {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.letter {
+  width: 1cm;
+  height: 1cm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #f5d76e;
+  border: 2px solid #b8860b;
+  cursor: grab;
+  user-select: none;
+}
+
+.letter:active {
+  cursor: grabbing;
+}
